@@ -24,8 +24,7 @@ class Prost(object):
 		self.query = ProstQuery()
 
 	def _cp_dispatch(self, vpath):
-		if len(vpath) == 2:
-			vpath.pop(0)
+		if len(vpath) == 1:
 			query_string = vpath.pop(0)
 			cherrypy.request.params['query'] = query_string
 			return self.query
