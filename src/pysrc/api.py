@@ -39,6 +39,8 @@ def _fetch_from_api(root=ROOT, path="/", **kwargs):
 	return raw and json.loads(raw)
 
 ### Endpoints ###
+def open_events_global(query):
+	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, text=query), EventResult)
 def open_events(query, lat, lon, radius):
 	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, text=query, lat=lat, lon=lon, radius=radius), EventResult)
 
