@@ -2,12 +2,15 @@
 	<title>Meetup Prost</title>
 </head>
 <body>
-	<a href="?query=kanpai"/>Kanpai!</a>
-	<a href="?query=prost"/>Prost!</a>
-	<h1>Meetups with ${query}</h1>
-	<ul>
-	% for res in results:
-		<li>${res.name}</li>
+	% for path in presets:
+		<a href="/q/${path}/"/>${path.capitalize()}!</a>
 	% endfor
-	</ul>
+	% if query and results:
+		<h1>Meetups with ${query.capitalize()}</h1>
+		<ul>
+		% for res in results:
+			<li>${res.name}</li>
+		% endfor
+		</ul>
+	% endif
 </body>
