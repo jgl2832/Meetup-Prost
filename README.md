@@ -13,3 +13,6 @@ Please add a file located at 'src/pysrc/key.py' to the main directory which cont
 
 To try out via command line:
 `. cl.sh <query>`
+
+To run server:
+`. run.sh`
