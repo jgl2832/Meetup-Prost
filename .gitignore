@@ -1,3 +1,4 @@
 src/pysrc/key.py
 *.swp
 *.pyc
+prost_log.log

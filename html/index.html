@@ -1,0 +1,18 @@
+<head>
+	<title>Meetup Prost</title>
+	<script type="text/javascript" src="/static/prost.js"></script>
+</head>
+<body>
+	% for path in presets:
+		<a href="/${path}/"/>${path.capitalize()}!</a>
+	% endfor
+	% if query and results:
+		<h1>Meetups with ${query.capitalize()}</h1>
+		<ul>
+		% for res in results:
+			<li>${res.name}</li>
+		% endfor
+		</ul>
+		<input id="nearMe" type="button" value="Near Me" onclick="useLocation('${query}');" />
+	% endif
+</body>

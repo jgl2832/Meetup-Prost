@@ -1,5 +1,9 @@
 Meetup Prost!
 
+Requirements:
+* cherrypy: http://docs.cherrypy.org/en/latest/install.html (easy_install cherrypy)
+* mako: http://www.makotemplates.org/download.html (easy_install mako)
+
 An app for discovering communities of people near you or around the world who can teach you a thing or two about another culture
 
 To use:
@@ -9,3 +13,6 @@ Please add a file located at 'src/pysrc/key.py' to the main directory which cont
 
 To try out via command line:
 `. cl.sh <query>`
+
+To run server:
+`. run.sh`
