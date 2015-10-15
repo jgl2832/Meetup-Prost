@@ -1,2 +1,3 @@
 src/pysrc/key.py
 *.swp
+*.pyc
