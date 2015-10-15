@@ -1,0 +1,13 @@
+<head>
+	<title>Meetup Prost</title>
+</head>
+<body>
+	<a href="?query=kanpai"/>Kanpai!</a>
+	<a href="?query=prost"/>Prost!</a>
+	<h1>Meetups with ${query}</h1>
+	<ul>
+	% for res in results:
+		<li>${res.name}</li>
+	% endfor
+	</ul>
+</body>
