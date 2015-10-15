@@ -6,7 +6,7 @@ import cherrypy
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
-from api import open_events_global
+from api import open_events_global, open_events
 
 lookup = TemplateLookup(directories=['html'], output_encoding='utf-8', encoding_errors='replace')
 
@@ -36,8 +36,11 @@ class Prost(object):
 
 class ProstQuery(object):
 	@cherrypy.expose
-	def index(self, query=None):
-		res = open_events_global(query).results
+	def index(self, query=None, useGeo=False, lat=None, lon=None):
+		if useGeo:
+			res = open_events(query, lat, lon, 100).results
+		else:
+			res = open_events_global(query).results
 		return render_index(results=res, query=query.decode("utf8"))
 
 if __name__ == '__main__':
