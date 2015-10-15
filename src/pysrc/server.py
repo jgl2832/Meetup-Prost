@@ -42,9 +42,4 @@ class ProstQuery(object):
 		return render_index(results=res, query=query.decode("utf8"))
 
 if __name__ == '__main__':
-	config = {'/':
-		{
-			'tools.encode.encoding': 'utf-8'
-		}
-	}
-	cherrypy.quickstart(Prost(), '/', config)
+	cherrypy.quickstart(Prost(), "/", "conf/server.conf")
