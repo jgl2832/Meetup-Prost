@@ -14,6 +14,7 @@ OPEN_EVENTS = "/2/open_events"
 def _params_dict(**kwargs):
 	params = kwargs
 	params["key"] = key
+	params["page"] = 20
 	return params
 
 def _params_string(**kwargs):
@@ -40,9 +41,9 @@ def _fetch_from_api(root=ROOT, path="/", **kwargs):
 
 ### Endpoints ###
 def open_events_global(query):
-	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, text=query), EventResult)
+	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query), EventResult)
 def open_events(query, lat, lon, radius):
-	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, text=query, lat=lat, lon=lon, radius=radius), EventResult)
+	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query, lat=lat, lon=lon, radius=radius), EventResult)
 
 ### Codecs ###
 

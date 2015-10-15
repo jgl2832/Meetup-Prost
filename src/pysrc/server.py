@@ -10,7 +10,30 @@ from api import open_events_global, open_events
 
 lookup = TemplateLookup(directories=['html'], output_encoding='utf-8', encoding_errors='replace')
 
-presets = [u"prost", u"kanpai", u"sláinte"]
+# TODO talk up country of origin
+# pronounciation
+# make the page look prettier/presentable/attractive
+# filter out events that are obviously not social
+presets = [
+			u"prost", # german
+			u"proost", # dutch
+			u"Prosit", # latvian
+			u"건배", # korean
+			u"kanpai", # japanese
+			u"かんぱい", # japanese (hiragana)
+			u"sláinte", # irish
+			u"فى صحتك", # arabic (egypt)
+			u"santé", # french
+			u"À la vôtre", # french
+			u"salut", # catalan
+			u"Skál", # icelandic
+			u"Skål", # norwegian/swedish
+			u"Salute", # italian
+			u"Saúde", # portugese
+			u"Mabuhay", # filipino
+			u"cheers", # english
+			u"salud", # spanish
+		]
 
 def render_index(**kwargs):
 	tmpl = lookup.get_template("index.html")
