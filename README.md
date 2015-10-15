@@ -7,5 +7,5 @@ Please add a file located at 'src/pysrc/key.py' to the main directory which cont
 
 `key="KEY_GOES_HERE"`
 
-To run:
-`. run.sh`
+To try out via command line:
+`. cl.sh <query>`
