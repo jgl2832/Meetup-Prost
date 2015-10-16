@@ -82,6 +82,21 @@ presets = [
 					<p>santé</p>
 					<ol><li>cheers! (as said when drinking)</li></ol>
 				"""),
+			Preset(name=u"salud", display_name=u"Salud", language=u"Spanish", etymology=u"""
+				""", description=u"""
+				"""),
+			Preset(name=u"salute", display_name=u"Salute", language=u"Italian", etymology=u"""
+				""", description=u"""
+				"""),
+			Preset(name=u"skål", display_name=u"Skål", language=u"Danish/Norwegian/Icelandic", etymology=u"""
+				""", description=u"""
+				"""),
+			Preset(name=u"l'chaim", display_name=u"לחיים", language=u"Hebrew", etymology=u"""
+				""", description=u"""
+				"""),
+			Preset(name=u"mabuhay", display_name=u"Mabuhay", language=u"Tagalog", etymology=u"""
+				""", description=u"""
+				"""),
 			Preset(name=u"cheers", display_name=u"Cheers", language=u"English", etymology=u"""
 				""", description=u"""
 				"""),

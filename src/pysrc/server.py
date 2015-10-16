@@ -11,8 +11,6 @@ from presets import presets, presets_by_name
 
 lookup = TemplateLookup(directories=['html'], output_encoding='utf-8', encoding_errors='replace')
 
-# TODO talk up country of origin
-# pronounciation
 # filter out events that are obviously not social
 # change favicon
 
