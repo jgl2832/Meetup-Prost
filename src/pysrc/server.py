@@ -12,7 +12,6 @@ from presets import presets, presets_by_name
 lookup = TemplateLookup(directories=['html'], output_encoding='utf-8', encoding_errors='replace')
 
 # filter out events that are obviously not social
-# change favicon
 
 def render_index(**kwargs):
 	tmpl = lookup.get_template("index.html")
@@ -50,6 +49,7 @@ class ProstQuery(object):
 			api_res = open_events_global(query)
 			cherrypy.log(str(api_res.meta))
 			res = api_res.results
+
 		return render_index(results=res, use_preset=use_preset, query=query.decode("utf8"))
 
 if __name__ == '__main__':

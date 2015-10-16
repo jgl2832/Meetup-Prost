@@ -40,11 +40,13 @@ def _fetch_from_api(root=ROOT, path="/", **kwargs):
 	raw = _fetch_raw_from_api(root, path, **kwargs)
 	return raw and json.loads(raw)
 
+category_ids="1,2,3,4,5,6,8,10,11,13,15,16,12,17,18,20,21,22,23,24,25,27,29,30,31,32,33,34,35"
+
 ### Endpoints ###
 def open_events_global(query):
-	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query, fields="group_photo"), EventResult)
+	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, category=category_ids, and_text="true", text=query, fields="group_photo,category"), EventResult)
 def open_events(query, lat, lon, radius):
-	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query, fields="group_photo", lat=lat, lon=lon, radius=radius), EventResult)
+	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, category=category_ids, and_text="true", text=query, fields="group_photo,category", lat=lat, lon=lon, radius=radius), EventResult)
 
 ### Codecs ###
 
@@ -71,6 +73,9 @@ class EventResult():
 		self.time = date.fromtimestamp(json["time"] / 1000)
 		self.month = self.time.strftime("%b")
 		self.day = self.time.strftime("%d")
+
+		self.category_id = group_json["category"]["id"]
+		self.category_name = group_json["category"]["name"]
 
 		self.url = json["event_url"]
 
