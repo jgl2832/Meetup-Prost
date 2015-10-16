@@ -47,7 +47,9 @@ class ProstQuery(object):
 		if useGeo:
 			res = open_events(query, lat, lon, 100).results
 		else:
-			res = open_events_global(query).results
+			api_res = open_events_global(query)
+			cherrypy.log(str(api_res.meta))
+			res = api_res.results
 		return render_index(results=res, use_preset=use_preset, query=query.decode("utf8"))
 
 if __name__ == '__main__':
