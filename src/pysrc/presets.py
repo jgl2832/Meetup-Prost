@@ -33,10 +33,12 @@ presets = [
 					<p>乾杯 (hiragana かんぱい, romaji kanpai)</p>
 					<ol><li>cheers; common toast. Idiomatically, bottoms up</li></ol>
 				"""),
+			Preset(name=u"飲杯", display_name=u"飲杯", language=u"Chinese (Cantonese)", etymology=u"""
+					(yám būi, lit. "drink the glass", similar to "bottoms up" in English)
+				""", description=u""""""),
 			Preset(name=u"saúde", display_name=u"Saúde", language=u"Portugese", etymology=u"""
 					From Old Portuguese saude, from Latin salūtem, accusative singular of salūs (“health”).
-				""",
-				description=u"""
+				""",description=u"""
 					<h3>Pronounciation</h3>
 					<ul>
 						<li>(Brazil) IPA: /sa.ˈu.d͡ʒi/</li>
@@ -49,7 +51,50 @@ presets = [
 					<h4>saúde</h4>
 					<ol><li>cheers (toast when drinking)</li><li>gesundheit; bless you (said to someone who has just sneezed)</li></ol>
 				"""),
+			Preset(name=u"sláinte", display_name=u"Sláinte", language=u"Gaelic", etymology=u"""
+
+				""",description=u"""
+					<h3>Pronounciation</h3>
+					<ul><li>IPA: /ˈsl͈aːn͈ʲtʲə/</li></ul>
+					<h3>Interjection</h3>
+					<p>sláinte</p>
+					<ol><li>cheers</li></ol>
+					<h3>Noun</h3>
+					<p>sláinte f (genitive singular sláinte, nominative plural sláintí)</p>
+					<ol>
+						<li>
+							<p>health</p>
+							<p>
+							Sláinte chuig na fir agus go maire na mná go deo!
+							Health to the men and may the women live forever!
+							Is fearr an tsláinte ná na táinte.
+							Health is better than wealth.
+							</p>
+						</li>
+						<li>healthcare</li>
+						<li>toast (drink)</li>
+					</ol>
+				"""),
+			Preset(name=u"santé", display_name=u"Santé", language=u"French", etymology=u"""
+					From Latin sanitatem, accusative of sanitas.
+				""", description=u"""
+					<h3>Interjection</h3>
+					<p>santé</p>
+					<ol><li>cheers! (as said when drinking)</li></ol>
+				"""),
+			Preset(name=u"cheers", display_name=u"Cheers", language=u"English", etymology=u"""
+				""", description=u"""
+				"""),
 		]
+# cheers
+# Skål
+# Salud
+# l'chaim
+# salute
+# Mabuhay (tagalog)
+
+
+
 
 presets_by_name = {p.name: p for p in presets}
 """

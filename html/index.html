@@ -24,8 +24,10 @@
 				<div class="docBounds">
 					<h1>${use_preset.display_name}</h1>
 					<p>${use_preset.language}</p>
-					<h3>Etymology</h3>
-					<p>${use_preset.etymology}</p>
+					% if use_preset.etymology and not use_preset.etymology.isspace():
+						<h3>Etymology</h3>
+						<p>${use_preset.etymology}</p>
+					% endif
 					${use_preset.description}
 				</div>
 			</div>
@@ -70,6 +72,10 @@
 			</div>
 			<!--<input id="nearMe" type="button" value="Near Me" onclick="useLocation('${query}');" />-->
 		% else:
+			<div class="docStripe" style="background-position: center; background-image: url(/static/prost1.jpg)">
+				<div class="docBounds" style="height:300px">
+				</div>
+			</div>
 			<div class="docStripe">
 				<div class="docBounds">
 					<h1>Meetup Prost</h1>
