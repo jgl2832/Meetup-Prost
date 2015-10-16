@@ -1,19 +1,95 @@
 <head>
 	<title>Meetup Prost</title>
 	<script type="text/javascript" src="/static/prost.js"></script>
+	<link rel="stylesheet" href="/static/sassquatch.css" />
 </head>
-<body>
-	<a href="/">Home.</a><br/>
-	% for path in presets:
-		<a href="/${path}/"/>${path.capitalize()}!</a>
-	% endfor
-	% if query and results:
-		<h1>Meetups with ${query.capitalize()}</h1>
-		<ul>
-		% for res in results:
-			<li>${res.name}</li>
-		% endfor
+<body style="background: rgba(53, 62, 72, 1);">
+	<div class="docSection inverted">
+		<ul class="tabControl">
+			<li class="tabControl-tab ${'tabControl-tab--selected' if not query else ''}">
+				<a class="tabControl-link" href="/">Home</a>
+			</li>
+			<li class="tabControl-tab">|</li>
+			% for preset in presets:
+				<li class="tabControl-tab ${'tabControl-tab--selected' if preset and query and preset.name.lower() == query.lower() else ''}">
+					<a class="tabControl-link" href="/${preset.name}/"/>${preset.display_name}</a>
+				</li>
+			% endfor
 		</ul>
-		<input id="nearMe" type="button" value="Near Me" onclick="useLocation('${query}');" />
-	% endif
+	</div>
+		
+	<div class="docSection">
+		% if query:
+			<div class="docStripe">
+				<div class="docBounds">
+					<h1>${use_preset.display_name}</h1>
+					<p>${use_preset.language}</p>
+					<h3>Etymology</h3>
+					<p>${use_preset.etymology}</p>
+					${use_preset.description}
+				</div>
+			</div>
+			<div class="docStripe--inverted inverted">
+				<div class="docBounds">
+					% if results:
+						<ul class="chunkList">
+							% for res in results:
+								<li class="chunklist-row ffbox">
+									<a target="_blank" href="${res.url}" class="chunkList-chunk ffbox-fix">
+										<span class="avatar avatar--chapter avatar--big" style="background-image: url(${res.photo_url});">
+											Photo
+										</span>
+									</a>
+									<div class="chunkList-chunk ffbox-flex">
+										<h5>${res.name}</h5>
+										% if res.loc_string:
+											<p class="small">${res.loc_string}</p>
+										% endif
+										<p>${res.group_name}</p>
+									</div>
+									<div class="chunkList-chunk ffbox-fix">
+										<time class="tearsheet">
+											<span class="month">${res.month}</span>
+											<span class="day">${res.day}</span>
+										</time>
+									</div>
+								</li>
+							% endfor
+						</ul>
+					% endif
+				</div>
+			</div>
+			<div class="docStripe--inverted inverted">
+				<div class="docBounds">
+					<div class="nametag-photo" style="background-image: url(/static/Yvette-Pasqua-Headshot.jpg)">
+						<div class="nametag-photo-name">
+							<p>${use_preset.display_name}!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<input id="nearMe" type="button" value="Near Me" onclick="useLocation('${query}');" />-->
+		% else:
+			<div class="docStripe">
+				<div class="docBounds">
+					<h1>Meetup Prost</h1>
+					<p>A toast to drinking meetups in every culture.</p>
+					<p>Select a toast above, learn a little bit about it, and then find a Meetup and go practice!</p>
+					<p>Prost!</p>
+				</div>
+			</div>
+			<div class="docStripe--inverted inverted">
+				<div class="docBounds">
+					<h2>Prost</h2>
+					<h3>Etymology</h3>
+					<p>Latin pro ("for"), + sit ("may it be"): literally "may it be for (you)", "may it benefit (you)". Compare prosit.</p>
+					<h3>Interjection</h3>
+					<h4>prost!</h4>
+					<ol>
+						<li>the usual toast when drinking alcohol; cheers</li>
+					</ol>
+				</div>
+			</div>
+		% endif
+	</div>
 </body>

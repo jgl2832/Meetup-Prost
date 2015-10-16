@@ -4,6 +4,7 @@ except ImportError:
 	print "Must define key.py according to readme"
 	exit(1)
 
+from datetime import date
 import json
 import urllib
 import urllib2
@@ -41,9 +42,9 @@ def _fetch_from_api(root=ROOT, path="/", **kwargs):
 
 ### Endpoints ###
 def open_events_global(query):
-	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query), EventResult)
+	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query, fields="group_photo"), EventResult)
 def open_events(query, lat, lon, radius):
-	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query, lat=lat, lon=lon, radius=radius), EventResult)
+	return ApiResult(_fetch_from_api(path=OPEN_EVENTS, and_text="true", text=query, fields="group_photo", lat=lat, lon=lon, radius=radius), EventResult)
 
 ### Codecs ###
 
@@ -61,11 +62,30 @@ class EventResult():
 
 		self.name = json["name"]
 		self.distance = json["distance"] if "distance" in json else None
+		self.description = "description" in json and json["description"]
+		self.group_name = group_json["name"]
+
+		self.photo_url = "group_photo" in group_json and group_json["group_photo"]["photo_link"]
+		self.thumb_url = "group_photo" in group_json and group_json["group_photo"]["thumb_link"]
+
+		self.time = date.fromtimestamp(json["time"] / 1000)
+		self.month = self.time.strftime("%b")
+		self.day = self.time.strftime("%d")
+
+		self.url = json["event_url"]
 
 		if "venue" in json:
 			venue_json = json["venue"]
 			self.lat = venue_json["lat"]
 			self.lon = venue_json["lon"]
+			self.city = venue_json["city"]
+			self.state = "state" in venue_json and venue_json["state"]
+			self.country = venue_json["country"]
+
+			state_string = ", %s" % self.state if self.state else ""
+			self.loc_string = "%s%s, %s" % (self.city, state_string, self.country.upper())
 		else:
 			self.lat = group_json["group_lat"]
 			self.lon = group_json["group_lon"]
+			self.loc_string = None
+
